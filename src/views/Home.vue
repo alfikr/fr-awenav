@@ -31,7 +31,7 @@ export default {
   },
   components: {
     BottomNav, SettingHome,
-    Dashboard,ProfileHome, RecentHome,
+    Dashboard,ProfileHome,  RecentHome,
     TransaksiHome, ProductHome
   },
   data() {
