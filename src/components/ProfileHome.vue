@@ -1,45 +1,47 @@
 <template>
   <v-app>
-    <v-layout class="text-xs-center" column>
+    <template v-if="logged">
+      <v-layout class="text-xs-center" column>
       <v-card class="rounded-card">
         <v-card-text>
           <v-avatar size="96" >
-            <img class="rounded-card"
-              :src="user.photo || require('../assets/myAvatar.png')"
+            <img @click="$refs.file.click()" class="rounded-card"
+              :src="user.avatar || require('../assets/myAvatar.png')"
               alt="avatar"
             >
-            <v-btn style="z-index: 100"></v-btn>
+            <input @change="openAvatarPicker" type="file" ref="file" style="display: none">
           </v-avatar>
         </v-card-text>
       </v-card>
     </v-layout>
-    <v-layout row>
-      <v-form></v-form>
-    </v-layout>
+    </template>
+    <UserDetail />
   </v-app>
 </template>
 <script>
+import UserDetail from './users/UsersDetail'
+import * as Profiles from '@/services/profiles'
 export default {
   data() {
     return {
       user: {
-        photo: ""
-      }
+      },
+      logged:false
     };
   },
+  components:{
+    UserDetail
+  },
   methods: {
-    openAvatarPicker() {}
+    openAvatarPicker() {
+        
+    }
+  },
+  beforeMount(){
+    this.user=Profiles.getProfile();
   }
 };
 </script>
 <style scoped>
-.bordered{
-    border-style: solid;
-    
-}
-.myavatar{
-    z-index: 1;
-    margin-top: 40px;
-}
 </style>
 

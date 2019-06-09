@@ -19,6 +19,11 @@ export default {
                 keterangan:'Pembayaran listrik dengan ID Pelanggan xxxxx',
                 nominal: 232500,
                 faktur: 'XDA809182'
+            },{
+               produk:'PLN POSTPAID',
+                keterangan:'Pembayaran listrik dengan ID Pelanggan xxxxx',
+                nominal: 232500,
+                faktur: 'XDA809182' 
             }]
         }
     },methods:{

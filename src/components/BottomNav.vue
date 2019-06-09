@@ -1,8 +1,8 @@
 <template>
   <v-app>
     <v-bottom-nav fixed :active.sync="activeBtn" 
-    :value="showNav" color="transparent">
-        <v-btn @click="selectedNav('recent')" ripple flat color="teal">
+    :value="showNav" color="white">
+        <v-btn v-if="isAuth" @click="selectedNav('recent')" ripple flat color="teal">
             <span>Recents</span>
             <v-icon>fa fa-history</v-icon>
         </v-btn>
@@ -38,6 +38,7 @@ export default {
             showNav: true,
             selectNav: 'dashboard',
             isAdmin: false,
+            isAuth: false,
         }
     },
     computed:{
