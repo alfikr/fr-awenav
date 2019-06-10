@@ -1,10 +1,7 @@
 <template>
   <v-app>
     <template v-if="!isMobile">
-      <Toolbars/>
-      <v-container style="margin-top: 50px;">
-        <WebView/>
-      </v-container>
+      <WebView />
     </template>
     <template v-else>
       <v-container>
@@ -25,7 +22,6 @@
 </template>
 
 <script>
-import Toolbars from "../components/core/Toolbars";
 import BottomNav from "../components/BottomNav";
 import Dashboard from "../components/Dashboard";
 import RecentHome from "../components/RecentHome";
@@ -35,6 +31,7 @@ import ProfileHome from "../components/ProfileHome";
 import SettingHome from "../components/SettingHome";
 import { mapState } from "vuex";
 import WebView from "../components/WebView";
+import * as ProfileService from '@/services/profiles'
 export default {
   methods: {
     gantiInterface(val) {
@@ -62,14 +59,14 @@ export default {
     RecentHome,
     TransaksiHome,
     ProductHome,
-    Toolbars,
     WebView
   },
   data() {
     return {
       image: "https://awenav.com/img/awenav.ef3d3dbb.png",
       nav: "dashboard",
-      isMobile: false
+      isMobile: false,
+      isAuth: false,
     };
   },
   computed: {
@@ -82,8 +79,9 @@ export default {
   },
   beforeMount() {
     this.mobileCheck();
+    this.isAuth=ProfileService.isLogged();
   },
-  mounted(){
+  mounted() {
     window.addEventListener("resize", this.mobileCheck);
   },
   beforeDestroy() {

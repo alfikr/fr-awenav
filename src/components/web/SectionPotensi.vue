@@ -1,18 +1,14 @@
 <template>
-    <v-parallax dark :src="vbanner" >
+    <v-parallax light :src="vbanner">
         <!-- animated panel -->
     </v-parallax>
-
 </template>
 <script>
 export default {
     data(){
         return{
-            vbanner:require('../../assets/background/bandungan.jpg'),
-            
+            vbanner:require('../../assets/background/umbul.jpg')
         }
     }
 }
 </script>
-<style scoped>
-</style>

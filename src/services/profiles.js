@@ -22,3 +22,6 @@ export function getUsaha(){
     const data=Axios.get(config.url.usaha)
     return data;
 }
+export function isLogged(){
+    return false;
+}
